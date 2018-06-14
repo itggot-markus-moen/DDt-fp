@@ -10,6 +10,9 @@ def fp(tfp, cfp, hours)
         round = 0.0
     end
     while i < hours
+        if (cfp + reclaimed) == tfp
+            break
+        end
         restore = ((missing * 0.1) + round).to_i
         if restore == 0
             restore = 1
@@ -17,9 +20,6 @@ def fp(tfp, cfp, hours)
         reclaimed += restore
         missing -= restore
         i += 1
-        if (cfp + reclaimed) == tfp
-            break
-        end
     end
     if reclaimed == 0 && cfp != tfp
         reclaimed = 1
