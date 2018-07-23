@@ -4,25 +4,21 @@ def fp(tfp, cfp, hours)
     reclaimed = 0
     puts "Rest? (y/n)"
     rest = STDIN.gets.chomp
-    if rest == "y"
-        round = 0.5
-    else
-        round = 0.0
-    end
     while i < hours
         if (cfp + reclaimed) == tfp
             break
         end
-        restore = ((missing * 0.1) + round).to_i
+        if rest == "y"
+            restore = (missing * 0.1).ceil.to_i
+        else
+            restore = (missing * 0.1).floor.to_i
+        end
         if restore == 0
             restore = 1
         end
         reclaimed += restore
         missing -= restore
         i += 1
-    end
-    if reclaimed == 0 && cfp != tfp
-        reclaimed = 1
     end
     output = "You restore #{reclaimed} fp.\nYour now have #{cfp + reclaimed} fp."
     return output
