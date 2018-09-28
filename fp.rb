@@ -20,7 +20,7 @@ def fp(tfp, cfp, hours)
         missing -= restore
         i += 1
     end
-    output = "You restore #{reclaimed} fp.\nYour now have #{cfp + reclaimed} fp."
+    output = "You restore #{reclaimed} fp.\nYou now have #{cfp + reclaimed} fp."
     return output
 end
 
